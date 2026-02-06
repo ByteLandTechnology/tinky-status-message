@@ -1,6 +1,6 @@
 {
   "name": "tinky-status-message",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "description": "React status message component for terminal UIs",
   "keywords": [
     "react",
