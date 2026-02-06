@@ -1,3 +1,7 @@
+**tinky-status-message**
+
+---
+
 # tinky-status-message
 
 A React status message component for CLI applications, built on the Tinky framework.
