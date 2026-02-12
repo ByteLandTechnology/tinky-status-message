@@ -12,10 +12,10 @@
  * - Integration with the tinky-theme system
  *
  * Variant configurations:
- * - info: Blue color with ℹ️ icon (fallback: ℹ)
- * - success: Green color with ✅ icon (fallback: √)
- * - error: Red color with ❌ icon (fallback: ×)
- * - warning: Yellow color with ⚠️ icon (fallback: ‼)
+ * - info: Blue color with info symbol (`ℹ`/`i`)
+ * - success: Green color with tick symbol (`✔`/`√`)
+ * - error: Red color with cross symbol (`✘`/`×`)
+ * - warning: Yellow color with warning symbol (`⚠`/`‼`)
  *
  * The module exports:
  * 1. `statusMessageTheme` - Complete theme with styles
@@ -98,10 +98,10 @@ const colorByVariant: Record<StatusMessageVariant, string> = {
  *   - warning: Warning messages or cautionary notes
  *
  * Variant visual characteristics:
- * - info: Blue color with ℹ️ icon (fallback: ℹ)
- * - success: Green color with ✅ icon (fallback: √)
- * - error: Red color with ❌ icon (fallback: ×)
- * - warning: Yellow color with ⚠️ icon (fallback: ‼)
+ * - info: Blue color with info symbol (`ℹ`/`i`)
+ * - success: Green color with tick symbol (`✔`/`√`)
+ * - error: Red color with cross symbol (`✘`/`×`)
+ * - warning: Yellow color with warning symbol (`⚠`/`‼`)
  *
  * @example
  * ```typescript
@@ -223,8 +223,8 @@ const statusMessageTheme = {
      * @param {StatusMessageThemeProps} props - Props containing the variant
      * @returns {TextProps} Props for rendering the icon character
      *
-     * The icon is a variant-specific emoji character selected in the component
-     * based on Unicode support detection.
+     * The icon is a variant-specific figure character selected in the component.
+     * Symbol selection is handled by `useFigures()` in `StatusMessage`.
      *
      * Applied styles:
      * - `color: variant-specific` - Color based on variant

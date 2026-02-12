@@ -83,8 +83,8 @@ Props containing the variant
 
 Props for rendering the icon character
 
-The icon is a variant-specific emoji character selected in the component
-based on Unicode support detection.
+The icon is a variant-specific figure character selected in the component.
+Symbol selection is handled by `useFigures()` in `StatusMessage`.
 
 Applied styles:
 

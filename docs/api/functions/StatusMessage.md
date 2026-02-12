@@ -39,12 +39,8 @@ Rendering behavior:
 
 1. Reads theme configuration for the StatusMessage component
 2. Resolves variant-specific styles from theme
-3. Detects Unicode support in the terminal environment
+3. Gets terminal-appropriate symbols from `useFigures()`
 4. Displays icon on the left side (non-shrinking)
-
-- Uses Unicode emoji if terminal supports it
-- Falls back to ASCII character for unsupported terminals
-
 5. Displays content on the right side
 
 Theme integration:

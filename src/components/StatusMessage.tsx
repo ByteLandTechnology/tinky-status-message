@@ -8,15 +8,15 @@
  * Key features:
  * - Four semantic variants: info, success, error, warning
  * - Automatic color mapping for each variant
- * - Variant-specific icons with Unicode/fallback detection
+ * - Variant-specific icons from `tinky-figures` `useFigures()`
  * - Integration with tinky-theme for consistent styling
  * - Flexible content support via ReactNode
  *
  * Variant characteristics:
- * - info: Blue color with ℹ️ icon (fallback: ℹ) for general information
- * - success: Green color with ✅ icon (fallback: √) for successful operations
- * - error: Red color with ❌ icon (fallback: ×) for error notifications
- * - warning: Yellow color with ⚠️ icon (fallback: ‼) for cautionary messages
+ * - info: Blue color with info symbol (`ℹ`/`i`) for general information
+ * - success: Green color with tick symbol (`✔`/`√`) for successful operations
+ * - error: Red color with cross symbol (`✘`/`×`) for error notifications
+ * - warning: Yellow color with warning symbol (`⚠`/`‼`) for cautionary messages
  *
  * The component uses the tinky-theme system to resolve styling and
  * configuration, allowing for easy customization through theme extension.
@@ -66,9 +66,9 @@
  */
 
 import { type JSX, type ReactNode } from "react";
-import { Box, Text, useApp } from "tinky";
+import { Box, Text } from "tinky";
+import { useFigures } from "tinky-figures";
 import { useComponentTheme } from "tinky-theme";
-import { isUnicodeSupported } from "../utils/unicode.js";
 import { type StatusMessageThemeProps } from "../themes/status-message-theme.js";
 import statusMessageTheme from "../themes/status-message-theme.js";
 import { type StatusMessageVariant } from "../types/status-message-types.js";
@@ -87,10 +87,10 @@ import { type StatusMessageVariant } from "../types/status-message-types.js";
  *   determines the visual appearance including icon color and semantic meaning.
  *
  *   Variant options and their meanings:
- *   - `info`: General information or neutral messages (blue color, ℹ️ icon / ℹ fallback)
- *   - `success`: Successful operations or confirmations (green color, ✅ icon / √ fallback)
- *   - `error`: Error messages or failure notifications (red color, ❌ icon / × fallback)
- *   - `warning`: Warning messages or cautionary notes (yellow color, ⚠️ icon / ‼ fallback)
+ *   - `info`: General information or neutral messages (blue color, `ℹ` / `i`)
+ *   - `success`: Successful operations or confirmations (green color, `✔` / `√`)
+ *   - `error`: Error messages or failure notifications (red color, `✘` / `×`)
+ *   - `warning`: Warning messages or cautionary notes (yellow color, `⚠` / `‼`)
  *
  *   Each variant has associated:
  *   - Icon color for visual emphasis
@@ -151,10 +151,8 @@ export interface StatusMessageProps {
  * Rendering behavior:
  * 1. Reads theme configuration for the StatusMessage component
  * 2. Resolves variant-specific styles from theme
- * 3. Detects Unicode support in the terminal environment
+ * 3. Gets terminal-appropriate symbols from `useFigures()`
  * 4. Displays icon on the left side (non-shrinking)
- *   - Uses Unicode emoji if terminal supports it
- *   - Falls back to ASCII character for unsupported terminals
  * 5. Displays content on the right side
  *
  * Theme integration:
@@ -205,24 +203,20 @@ export function StatusMessage({
   children,
   variant,
 }: StatusMessageProps): JSX.Element {
+  const figures = useFigures();
   const { styles } = useComponentTheme<StatusMessageThemeProps>(
     "StatusMessage",
     statusMessageTheme,
     { variant },
   );
-  const { env } = useApp();
 
-  const supportsUnicode = isUnicodeSupported(env ?? {});
-  const iconMap: Record<string, { unicode: string; fallback: string }> = {
-    info: { unicode: "ℹ️", fallback: "ℹ" },
-    success: { unicode: "✅", fallback: "√" },
-    error: { unicode: "❌", fallback: "×" },
-    warning: { unicode: "⚠️", fallback: "‼" },
+  const iconByVariant: Record<StatusMessageVariant, string> = {
+    info: figures.info,
+    success: figures.tick,
+    error: figures.cross,
+    warning: figures.warning,
   };
-
-  const icon = supportsUnicode
-    ? iconMap[variant].unicode
-    : iconMap[variant].fallback;
+  const icon = iconByVariant[variant];
 
   return (
     <Box {...styles.container}>

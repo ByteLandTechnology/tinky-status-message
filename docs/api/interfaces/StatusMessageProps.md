@@ -52,10 +52,10 @@ determines the visual appearance including icon color and semantic meaning.
 
 Variant options and their meanings:
 
-- `info`: General information or neutral messages (blue color, ℹ️ icon / ℹ fallback)
-- `success`: Successful operations or confirmations (green color, ✅ icon / √ fallback)
-- `error`: Error messages or failure notifications (red color, ❌ icon / × fallback)
-- `warning`: Warning messages or cautionary notes (yellow color, ⚠️ icon / ‼ fallback)
+- `info`: General information or neutral messages (blue color, `ℹ` / `i`)
+- `success`: Successful operations or confirmations (green color, `✔` / `√`)
+- `error`: Error messages or failure notifications (red color, `✘` / `×`)
+- `warning`: Warning messages or cautionary notes (yellow color, `⚠` / `‼`)
 
 Each variant has associated:
 

@@ -6,6 +6,7 @@ A React status message component for CLI applications, built on the Tinky framew
 
 - Four status variants: info, success, warning, error
 - Icon-based visual indicators
+- Default symbols powered by `tinky-figures` `useFigures()`
 - Customizable colors and styles
 - Theme support via tinky-theme
 - Full TypeScript support
@@ -73,12 +74,12 @@ import { extendTheme } from "tinky-theme";
 const theme = extendTheme(defaultTheme, {
   components: {
     StatusMessage: {
-      config: (props) => ({
-        icon: customIconMap[props.variant],
-      }),
       styles: {
         container: () => ({
           columnGap: 2, // Increase spacing
+        }),
+        icon: (props) => ({
+          color: customColorMap[props.variant],
         }),
       },
     },
@@ -90,12 +91,14 @@ const theme = extendTheme(defaultTheme, {
 
 Each variant uses a predefined color:
 
-- `success` - Green (✓)
-- `error` - Red (✗)
+- `success` - Green (`✔`)
+- `error` - Red (`✘`)
 - `warning` - Yellow (⚠)
 - `info` - Blue (ℹ)
 
-You can customize these through the theme system.
+On terminals without full Unicode support, symbols automatically fall back via `tinky-figures` (for example: `√`, `×`, `‼`, `i`).
+
+You can customize colors through the theme system.
 
 ### Development
 

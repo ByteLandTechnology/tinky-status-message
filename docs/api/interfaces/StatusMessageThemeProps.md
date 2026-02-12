@@ -35,7 +35,7 @@ determines the color scheme. Each variant has specific semantic meaning:
 
 Variant visual characteristics:
 
-- info: Blue color with ℹ️ icon (fallback: ℹ)
-- success: Green color with ✅ icon (fallback: √)
-- error: Red color with ❌ icon (fallback: ×)
-- warning: Yellow color with ⚠️ icon (fallback: ‼)
+- info: Blue color with info symbol (`ℹ`/`i`)
+- success: Green color with tick symbol (`✔`/`√`)
+- error: Red color with cross symbol (`✘`/`×`)
+- warning: Yellow color with warning symbol (`⚠`/`‼`)

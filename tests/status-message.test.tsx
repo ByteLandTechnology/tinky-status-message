@@ -16,7 +16,7 @@ describe("StatusMessage", () => {
     );
 
     const output = lastFrame();
-    expect(output).toContain("✅");
+    expect(output).toContain("✔");
     expect(output).toContain("Success");
   });
 
@@ -26,7 +26,7 @@ describe("StatusMessage", () => {
     );
 
     const output = lastFrame();
-    expect(output).toContain("❌");
+    expect(output).toContain("✘");
     expect(output).toContain("Error");
   });
 
@@ -36,7 +36,7 @@ describe("StatusMessage", () => {
     );
 
     const output = lastFrame();
-    expect(output).toContain("⚠️");
+    expect(output).toContain("⚠");
     expect(output).toContain("Warning");
   });
 
@@ -46,7 +46,7 @@ describe("StatusMessage", () => {
     );
 
     const output = lastFrame();
-    expect(output).toContain("ℹ️");
+    expect(output).toContain("ℹ");
     expect(output).toContain("Info");
   });
 
@@ -56,7 +56,7 @@ describe("StatusMessage", () => {
     );
 
     const output = lastFrame();
-    expect(output).toContain("✅");
+    expect(output).toContain("✔");
   });
 
   test("renders with long message", () => {
@@ -68,7 +68,7 @@ describe("StatusMessage", () => {
     );
 
     const output = lastFrame();
-    expect(output).toContain("⚠️");
+    expect(output).toContain("⚠");
     expect(output).toContain("very long message");
   });
 
