@@ -1,3 +1,9 @@
+## [1.1.0](https://github.com/ByteLandTechnology/tinky-status-message/compare/v1.0.0...v1.1.0) (2026-02-12)
+
+### ✨ Features
+
+- use tinky-figures for default status symbols ([f77e275](https://github.com/ByteLandTechnology/tinky-status-message/commit/f77e275a25e89fe46b96c0674a47ce5df386cfe6))
+
 ## 1.0.0 (2026-02-06)
 
 ### ✨ Features
